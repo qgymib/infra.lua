@@ -79,6 +79,10 @@ API_LOCAL void lua_api_foreach(lua_api_foreach_fn cb, void* arg);
 // API switches
 ///////////////////////////////////////////////////////////////////////////////
 
+#ifndef HAVE_STRERROR
+#define HAVE_STRERROR       1
+#endif
+
 #ifndef HAVE_GET_API_INFO
 #define HAVE_GET_API_INFO   1
 #endif
