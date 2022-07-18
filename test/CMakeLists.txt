@@ -14,3 +14,7 @@ set(CASE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/case)
 add_test(NAME sha256_once
         COMMAND ${LUA_EXE} ${CASE_DIR}/sha256_once.lua
         WORKING_DIRECTORY $<TARGET_FILE_DIR:infra>)
+
+add_test(NAME strerror
+        COMMAND ${LUA_EXE} ${CASE_DIR}/strerror.lua
+        WORKING_DIRECTORY $<TARGET_FILE_DIR:infra>)
