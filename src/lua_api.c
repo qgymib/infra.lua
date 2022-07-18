@@ -2,6 +2,7 @@
 #include "lua_errno.h"
 #include "lua_get_api_info.h"
 #include "lua_sha256.h"
+#include "lua_scheduler.h"
 
 /**
  * @brief Infra API.
@@ -13,13 +14,16 @@
  * + init: A function pointer for initialize module.
  * + brief: A C string contains brief document.
  * + document: A C string contains detail document.
- * 
- * @note Register in ASCII order.
  */
-#define INFRA_LUA_APIS(XX)          \
-    INFRA_LUA_API_STRERROR(XX)      \
-    INFRA_LUA_API_GET_API_INFO(XX)  \
-    INFRA_LUA_API_SHA256_ONCE(XX)
+#define INFRA_LUA_APIS(XX)                  \
+    INFRA_LUA_API_STRERROR(XX)              \
+    INFRA_LUA_API_GET_API_INFO(XX)          \
+    INFRA_LUA_API_SHA256_ONCE(XX)           \
+    INFRA_LUA_API_SCHEDULER_RUN(XX)         \
+    INFRA_LUA_API_SCHEDULER_SPAWN(XX)       \
+    INFRA_LUA_API_SCHEDULER_READY(XX)       \
+    INFRA_LUA_API_SCHEDULER_WAIT(XX)        \
+    INFRA_LUA_API_SCHEDULER_INFO(XX)
 
 #define EXPAND_INFRA_APIS_AS_REG(name, func, init, brief, document)   \
     { name, func },

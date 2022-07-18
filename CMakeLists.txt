@@ -12,9 +12,12 @@ endfunction()
 find_package(Lua REQUIRED)
 
 add_library(${PROJECT_NAME}
+    src/utils/list.c
+    src/utils/map.c
     src/lua_api.c
     src/lua_errno.c
     src/lua_get_api_info.c
+    src/lua_scheduler.c
     src/lua_sha256.c)
 
 target_include_directories(${PROJECT_NAME}
