@@ -13,7 +13,8 @@ find_package(Lua REQUIRED)
 
 add_library(${PROJECT_NAME}
     src/lua_api.c
-    src/lua_get_api_info.c)
+    src/lua_get_api_info.c
+    src/lua_sha256.c)
 
 target_include_directories(${PROJECT_NAME}
     PUBLIC
@@ -22,6 +23,10 @@ target_include_directories(${PROJECT_NAME}
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/src
         ${LUA_INCLUDE_DIR})
+
+if (BUILD_SHARED_LIBS AND WIN32)
+    target_compile_options(${PROJECT_NAME} PRIVATE /DLUA_BUILD_AS_DLL)
+endif()
 
 SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES PREFIX "")
 setup_target_wall(${PROJECT_NAME})
