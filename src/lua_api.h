@@ -32,6 +32,23 @@
 #   define API_LOCAL
 #endif
 
+#if !defined(offsetof)
+#   define offsetof(s,m) ((size_t)&(((s*)0)->m))
+#endif
+
+#if !defined(container_of)
+#   if defined(__GNUC__) || defined(__clang__)
+#       define container_of(ptr, type, member)   \
+            ({ \
+                const typeof(((type *)0)->member)*__mptr = (ptr); \
+                (type *)((char *)__mptr - offsetof(type, member)); \
+            })
+#   else
+#       define container_of(ptr, type, member)   \
+            ((type *) ((char *) (ptr) - offsetof(type, member)))
+#   endif
+#endif
+
 ///////////////////////////////////////////////////////////////////////////////
 // Application Programming Interface
 ///////////////////////////////////////////////////////////////////////////////
@@ -89,6 +106,26 @@ API_LOCAL void lua_api_foreach(lua_api_foreach_fn cb, void* arg);
 
 #ifndef HAVE_SHA256_ONCE
 #define HAVE_SHA256_ONCE        1
+#endif
+
+#ifndef HAVE_TASK_RUN
+#define HAVE_TASK_RUN           1
+#endif
+
+#ifndef HAVE_TASK_SPAWN
+#define HAVE_TASK_SPAWN         1
+#endif
+
+#ifndef HAVE_TASK_READY
+#define HAVE_TASK_READY         1
+#endif
+
+#ifndef HAVE_TASK_WAIT
+#define HAVE_TASK_WAIT          1
+#endif
+
+#ifndef HAVE_TASK_INFO
+#define HAVE_TASK_INFO          1
 #endif
 
 #endif

@@ -18,3 +18,7 @@ add_test(NAME sha256_once
 add_test(NAME strerror
         COMMAND ${LUA_EXE} ${CASE_DIR}/strerror.lua
         WORKING_DIRECTORY $<TARGET_FILE_DIR:infra>)
+
+add_test(NAME task
+        COMMAND ${LUA_EXE} ${CASE_DIR}/task.lua
+        WORKING_DIRECTORY $<TARGET_FILE_DIR:infra>)
