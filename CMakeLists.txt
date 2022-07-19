@@ -17,6 +17,7 @@ add_library(${PROJECT_NAME}
     src/lua_api.c
     src/lua_errno.c
     src/lua_get_api_info.c
+    src/lua_promise.c
     src/lua_scheduler.c
     src/lua_sha256.c)
 
