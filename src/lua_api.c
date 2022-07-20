@@ -1,5 +1,6 @@
 #include "lua_api.h"
 #include "lua_errno.h"
+#include "lua_gc.h"
 #include "lua_get_api_info.h"
 #include "lua_sha256.h"
 #include "lua_task.h"
@@ -23,7 +24,8 @@
     INFRA_LUA_API_TASK_SPAWN(XX)            \
     INFRA_LUA_API_TASK_READY(XX)            \
     INFRA_LUA_API_TASK_WAIT(XX)             \
-    INFRA_LUA_API_TASK_INFO(XX)
+    INFRA_LUA_API_TASK_INFO(XX)             \
+    INFRA_LUA_API_GC(XX)
 
 #define EXPAND_INFRA_APIS_AS_REG(name, func, init, brief, document)   \
     { name, func },
