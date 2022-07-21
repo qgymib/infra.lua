@@ -15,13 +15,15 @@ find_package(Lua REQUIRED)
 find_package(UV REQUIRED)
 
 add_library(${PROJECT_NAME}
+    src/utils/copy.c
     src/utils/list.c
     src/utils/map.c
     src/lua_api.c
     src/lua_errno.c
     src/lua_get_api_info.c
     src/lua_sha256.c
-    src/lua_task.c)
+    src/lua_task.c
+    src/lua_thread.c)
 
 target_include_directories(${PROJECT_NAME}
     PUBLIC

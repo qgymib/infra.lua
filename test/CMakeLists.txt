@@ -11,7 +11,8 @@ setup_target_wall(infra_loader)
 set(CASE_LIST
     sha256_once
     strerror
-    task)
+    task
+    thread)
 
 foreach (item IN LISTS CASE_LIST)
     add_test(NAME ${item}
